@@ -1,8 +1,8 @@
 name: Development workflow
 
-# on:
-#  push:
-#    branches: [ main ]
+ on:
+  push:
+    branches: [ main ]
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
           SITE_ACCESS_USER: ${{ secrets.SITE_ACCESS_USER }}
           SITE_ACCESS_PASSWORD: ${{ secrets.SITE_ACCESS_PASSWORD }}
         shell: bash
-        run: sed -i.bak "s/SITE_ACCESS_USER:SITE_ACCESS_PASSWORD/$SITE_ACCESS_USER:$SITE_ACCESS_PASSWORD/g" $(pwd)/public/_headers && rm $(pwd)/public/_headers.bak
+        run: sed -i.bak "s/SITE_ACCESS_USER:SITE_ACCESS_PASSWORD/$SITE_ACCESS_USER:$SITE_ACCESS_PASSWORD/g" $(pwd)/docs/_headers && rm $(pwd)/docs/_headers.bak
     
       - name: Setup Netlify environment variables
         env:
